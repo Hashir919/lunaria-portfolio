@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-moon-bg: #000000;
+  --color-moon-accent: #ffffff;
+  --color-moon-muted: #666666;
+  --color-moon-border: rgba(255, 255, 255, 0.1);
+  --color-moon-glow: #ffffff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-moon-bg text-white font-sans selection:bg-white selection:text-black;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default !important; /* Force native cursor for performance */
+  }
+}
+
+/* Zero-lag Premium Styles */
+.premium-card {
+  @apply bg-white/[0.02] border border-moon-border rounded-2xl transition-all duration-300;
+}
+
+.premium-card:hover {
+  @apply bg-white/[0.05] border-white/20;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #d1d1d1 50%, #888 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+}
+
+.nav-link {
+  @apply text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors;
+}
+
+.btn-primary {
+  @apply px-8 py-3 bg-white text-black text-[10px] font-bold tracking-[0.2em] hover:bg-white/90 transition-all rounded-full;
+}
+
+.btn-outline {
+  @apply px-8 py-3 border border-white/10 text-white text-[10px] font-bold tracking-[0.2em] hover:bg-white/5 transition-all rounded-full;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
