@@ -35,6 +35,20 @@ import {
 
 // @ts-ignore
 import founderImg from './assets/founder.png';
+// @ts-ignore
+import webDesignImg from './assets/portfolio/websdeng.png';
+// @ts-ignore
+import characterArtImg from './assets/portfolio/charcher art.png';
+// @ts-ignore
+import twitchEmotesImg from './assets/portfolio/emote.png';
+// @ts-ignore
+import overlaysImg from './assets/portfolio/overlay.png';
+// @ts-ignore
+import bannersImg from './assets/portfolio/banner.png';
+// @ts-ignore
+import logofolioImg from './assets/portfolio/logofolio.png';
+// @ts-ignore
+import vtuberModelImg from './assets/portfolio/2d 3d model.png';
 
 // --- Configuration ---
 
@@ -48,37 +62,37 @@ const CONTACT_INFO = {
 const PORTFOLIO_ITEMS = [
   { 
     title: "Web Design UI UX", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208660235026653/image.png?ex=69aed73d&is=69ad85bd&hm=3bf92cec0c114ef4613e30acaef13b86b9eed3a7a8e103a20b76a0ef75b9efa2&=&format=webp&quality=lossless",
+    image: webDesignImg,
     link: "https://www.behance.net/gallery/238283955/Web-Design-UI-UX"
   },
   { 
     title: "Character Art", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208221586194442/image.png?ex=69aed6d4&is=69ad8554&hm=3333fd0e603106f2b4a5e089e143a8322adb73d2ce81f22d58b9406ed031ffeb&=&format=webp&quality=lossless",
+    image: characterArtImg,
     link: "https://www.behance.net/gallery/234612627/Character-art"
   },
   { 
     title: "Twitch Emotes", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208808814055615/image.png?ex=69aed760&is=69ad85e0&hm=b05fe90cf0b69db1653ee4088ba3d6fcba8e0518d81e1b71f71b52ddc0e095ea&=&format=webp&quality=lossless",
+    image: twitchEmotesImg,
     link: "https://www.behance.net/gallery/230858479/Twitch-Emotes"
   },
   { 
     title: "Overlays", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208222123196599/image.png?ex=69aed6d5&is=69ad8555&hm=fb90494366abb262fd7309f071e9ac23d887632ee8c7be9869dd01e2ef4a0e0a&=&format=webp&quality=lossless",
+    image: overlaysImg,
     link: "https://www.behance.net/gallery/230858357/Overlays"
   },
   { 
     title: "Headers Banners", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208222605410415/image.png?ex=69aed6d5&is=69ad8555&hm=cb0c09112118d201c7ef09912383cd4183a18711124cf864d5809baedc24e57d&=&format=webp&quality=lossless",
+    image: bannersImg,
     link: "https://www.behance.net/gallery/230857207/HeadersBanners"
   },
   { 
     title: "Logofolio", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208222940958721/image.png?ex=69aed6d5&is=69ad8555&hm=31e8ea816bbf9884f08214c0f2890c754733c77d004bb8b08a509d65547be334&=&format=webp&quality=lossless",
+    image: logofolioImg,
     link: "https://www.behance.net/gallery/230856977/Logofolio"
   },
   { 
     title: "2D 3D VTuber Model", 
-    image: "https://media.discordapp.net/attachments/1269738553798164591/1480208223419105425/image.png?ex=69aed6d5&is=69ad8555&hm=9cc0a76e93bc38386ac15ac971aca5de300b41a6aa9a9b4398a0e529d1edf910&=&format=webp&quality=lossless",
+    image: vtuberModelImg,
     link: "https://www.behance.net/gallery/230856399/3D-VTuber-Models"
   },
 ];
@@ -202,24 +216,32 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Video */}
+      {/* Background Video using dangerouslySetInnerHTML for strict Safari compatibility */}
       <m.div 
         style={{ y }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 pointer-events-none"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover filter blur-[3px] scale-110 opacity-60"
-        >
-          <source src="https://motionbgs.com/media/5842/sakura-with-full-moon.960x540.mp4" type="video/mp4" />
-        </video>
+        <div 
+          className="absolute inset-0 w-full h-full"
+          dangerouslySetInnerHTML={{
+            __html: `
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+                poster="https://motionbgs.com/media/5842/sakura-with-full-moon.jpg"
+                class="absolute inset-0 w-full h-full object-cover filter blur-[3px] scale-110 opacity-60"
+              >
+                <source src="https://motionbgs.com/media/5842/sakura-with-full-moon.960x540.mp4" type="video/mp4" />
+              </video>
+            `
+          }}
+        />
         {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black/80" />
-        <div className="absolute inset-0 bg-black/40 md:bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 md:bg-black/20 pointer-events-none" />
       </m.div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20">
